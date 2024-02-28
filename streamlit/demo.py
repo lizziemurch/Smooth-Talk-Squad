@@ -56,11 +56,6 @@ def audiorec_demo_app():
         with col_playback:
             st.audio(wav_audio_data, format='audio/wav')
 
-        # samplerate = 44100; fs = 100
-        # t = np.linspace(0., 1., samplerate)
-        # amplitude = np.iinfo(np.int16).max
-        # data = amplitude * np.sin(2. * np.pi * fs * t)
-        # write("example.wav", samplerate, wav_audio_data.astype(np.int16))
         file_name = "output.wav"
         sample_rate = 44100
         with wave.open(file_name, "wb") as wf:
