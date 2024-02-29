@@ -20,6 +20,11 @@ pip install jupyter
 pip install -r requirements.txt
 ```
 
+# Start web server
+```
+streamlit run streamlit/demo.py
+```
+
 # Datasets
 https://github.com/apple/ml-stuttering-events-dataset
 ](.)
