@@ -1,0 +1,156 @@
+.fantasy-container {
+    position: relative;
+    background-color: #21212f;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border-top: 3px solid #5b488b;
+    /* box-shadow: 0 0 5px #999; */
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+
+}
+
+.fantasy-container p {
+    text-shadow: 0 0 3px #999;
+    margin: 0px;
+    font-size: 1rem;
+}
+
+h1 {
+    border-top: 3px solid #5b488b;
+    background-color: #21212f;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-family: sans-serif;
+    font-size: 2rem;
+    /* text-shadow: 2px 2px 10px #666; */
+}
+
+/* This probably can be deleted */
+.st-cp,
+.st-co,
+.st-at,
+.st-f4,
+.st-f7 {
+    background-color: #2b2a3a;
+    border-top: 3px solid #5b488b;
+}
+
+div[role="alert"] {
+    background-color: #2b2a3a;
+    border-top: 3px solid #5b488b;
+}
+
+.st-cm,
+.st-cl,
+.st-ck,
+.st-cj {
+    border-color: #5b488b;
+}
+
+/* @media (max-width:600px) {
+    img {
+        display: none;
+    }
+} */
+
+
+img.image {
+    position: absolute;
+    top: -46px;
+    right: -20px;
+    transform: scale(0.5, 0.5);
+}
+
+img.image:hover {
+    animation-duration: 2s;
+    animation-name: cat_anim;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cat_anim {
+    from {
+        filter: drop-shadow(2px 0 0 #0e1117) drop-shadow(0 2px 0 #0e1117) drop-shadow(-2px 0 0 #0e1117) drop-shadow(0 -2px 0 #0e1117);
+    }
+
+    to {
+        filter: drop-shadow(5px 0 0 #5b488b) drop-shadow(0 5px 0 #5b488b) drop-shadow(-5px 0 0 #5b488b) drop-shadow(0 -5px 0 #5b488b);
+    }
+}
+
+.bpad {
+    padding-left: 10px;
+    position: fixed;
+    margin-left: 1%;
+    margin-right: 1%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* max-height: 46px; */
+    /* background-color: #0e1117; */
+    color: #ccc;
+    /* width: 100%; */
+    overflow: auto;
+    font-family: monospace;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.coffee_btn {
+    justify-content: center;
+    margin: 0px;
+    border: solid 2px;
+    background-color: #0e1117;
+
+    border-radius: 10px 10px 0 0;
+    border-color: #21212f;
+    width: fit-content;
+    padding: 0.425rem;
+
+}
+
+
+.coffee_btn:hover {
+    animation-duration: 2s;
+    animation-name: pulse;
+    animation-fill-mode: forwards;
+    /* background-color: white; */
+}
+
+
+@keyframes pulse {
+    from {
+        border-color: #21212f;
+    }
+
+    to {
+        border-color: #5b488b;
+    }
+}
+
+audio {
+    max-height: 20px;
+}
+
+audio::-webkit-media-controls-panel,
+audio::-webkit-media-controls-enclosure {
+    background-color: #9c9d9f;
+    box-shadow: none;
+}
+
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-current-time-display {
+    /* color: black;
+    box-shadow: none;
+    background-color: #9c9d9f; */
+    /* text-shadow: none; */
+}
+
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-timeline {
+    /* background: white; */
+}
