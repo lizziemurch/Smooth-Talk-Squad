@@ -2,7 +2,7 @@ from pydub import AudioSegment
 import wave
 import os
 
-def splitter(file_location) -> None:
+def split_video(file_location) -> None:
     start=0
     end=3000
     # filenme=filename
@@ -15,7 +15,7 @@ def splitter(file_location) -> None:
         newAudio = AudioSegment.from_wav(file_location)
         newAudio = newAudio[start:end]
         newaudname="test_"+str(i)+".wav"
-        newAudio.export(os.path.join('audio','splits', newaudname), format="wav") #Exports to a wav file in the current path.
+        newAudio.export(os.path.join('voice','splits', newaudname), format="wav") #Exports to a wav file in the current path.
 
         start = start + 1000
         end = start + 3000

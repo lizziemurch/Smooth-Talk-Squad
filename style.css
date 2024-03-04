@@ -78,7 +78,7 @@ img.image {
     to {
         filter: drop-shadow(5px 0 0 #5b488b) drop-shadow(0 5px 0 #5b488b) drop-shadow(-5px 0 0 #5b488b) drop-shadow(0 -5px 0 #5b488b);
     }
-} */
+}*/
 
 .bpad {
     padding-left: 10px;
@@ -99,7 +99,7 @@ img.image {
     display: flex;
 }
 
-/* .coffee_btn {
+/*.coffee_btn {
     justify-content: center;
     margin: 0px;
     border: solid 2px;
@@ -117,8 +117,8 @@ img.image {
     animation-duration: 2s;
     animation-name: pulse;
     animation-fill-mode: forwards;
-    /* background-color: white; */
-} */
+    /* background-color: white;
+}*/
 
 
 @keyframes pulse {
