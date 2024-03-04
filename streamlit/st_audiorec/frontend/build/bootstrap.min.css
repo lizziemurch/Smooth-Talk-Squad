@@ -3751,7 +3751,7 @@ input[type="submit"].btn-block {
 }
 .custom-select-lg {
   height: calc(1.5em + 1rem + 2px);
-  padding-top: 0.5rem;
+  padding-top: 0.2rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   font-size: 1.25rem;
@@ -4808,7 +4808,7 @@ a.badge:hover {
 .badge-pill {
   padding-right: 0.6em;
   padding-left: 0.6em;
-  border-radius: 10rem;
+  border-radius: 5rem;
 }
 .badge-primary {
   color: #fff;

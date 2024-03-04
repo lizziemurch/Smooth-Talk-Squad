@@ -27,15 +27,15 @@ def temp_clear():
 
 def restart_session():
 
-    st.session_state["health"] = 100
-    st.session_state["mana"] = 80
-    st.session_state["gold"] = 5
-    st.session_state["place"] = "introScene"
-    st.session_state["sheep_anger"] = 0
-    st.session_state["forest_trip"] = 0
-    st.session_state["sword"] = 0
-    st.session_state["dragon_alive"] = 1
-    st.session_state["dragon_hp"] = 20
+    # st.session_state["health"] = 100
+    # st.session_state["mana"] = 80
+    # st.session_state["gold"] = 5
+    # st.session_state["place"] = "introScene"
+    # st.session_state["sheep_anger"] = 0
+    # st.session_state["forest_trip"] = 0
+    # st.session_state["sword"] = 0
+    # st.session_state["dragon_alive"] = 1
+    # st.session_state["dragon_hp"] = 20
     st.session_state["scenes_counter"] = {
         "intro_counter": 0,
         "cave_counter": 0,

@@ -4,7 +4,7 @@
     color: #fff;
     padding: 20px;
     border-radius: 5px;
-    border-top: 3px solid #5b488b;
+    border-top: 5px solid #5b488b;
     /* box-shadow: 0 0 5px #999; */
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 10px;
@@ -18,13 +18,13 @@
 }
 
 h1 {
-    border-top: 3px solid #5b488b;
+    border-top: 5px solid #5b488b;
     background-color: #21212f;
     color: #fff;
     text-align: center;
     padding: 20px;
-    font-family: sans-serif;
-    font-size: 2rem;
+    font-family:'Bangers', system-ui;
+    font-size: 2.5rem;
     /* text-shadow: 2px 2px 10px #666; */
 }
 
@@ -64,13 +64,13 @@ img.image {
     transform: scale(0.5, 0.5);
 }
 
-img.image:hover {
+/* img.image:hover {
     animation-duration: 2s;
     animation-name: cat_anim;
     animation-fill-mode: forwards;
-}
+} */
 
-@keyframes cat_anim {
+/* @keyframes cat_anim {
     from {
         filter: drop-shadow(2px 0 0 #0e1117) drop-shadow(0 2px 0 #0e1117) drop-shadow(-2px 0 0 #0e1117) drop-shadow(0 -2px 0 #0e1117);
     }
@@ -78,7 +78,7 @@ img.image:hover {
     to {
         filter: drop-shadow(5px 0 0 #5b488b) drop-shadow(0 5px 0 #5b488b) drop-shadow(-5px 0 0 #5b488b) drop-shadow(0 -5px 0 #5b488b);
     }
-}
+} */
 
 .bpad {
     padding-left: 10px;
@@ -99,7 +99,7 @@ img.image:hover {
     display: flex;
 }
 
-.coffee_btn {
+/* .coffee_btn {
     justify-content: center;
     margin: 0px;
     border: solid 2px;
@@ -118,7 +118,7 @@ img.image:hover {
     animation-name: pulse;
     animation-fill-mode: forwards;
     /* background-color: white; */
-}
+} */
 
 
 @keyframes pulse {

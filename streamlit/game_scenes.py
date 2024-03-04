@@ -15,7 +15,16 @@ import game_util
 
 
 def introScene():
-
+    st.markdown(
+    """
+    <style>
+    .st-emotion-cache-1y4p8pa {
+        padding-top: 3rem !important; /* Adjust the top padding to 1rem */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
     col1, col2 = st.columns(2, gap="small")
     with col1:
         # main_image
@@ -24,20 +33,30 @@ def introScene():
         # scene text
         if st.session_state["scenes_counter"]["intro_counter"] == 0:
             st.markdown(
-                f'<div class="fantasy-container"><img src="https://raw.githubusercontent.com/TomJohnH/streamlit-game/main/images/cat.gif" class="image"><p>Welcome to a fantastical realm of mystery and wonder. The path that brought you here has been long and winding - the decisions you\'ve made throughout your life have led you here. Now is the time to choose your path with caution and care, for the fate of this realm is in your hands. From the mystical fields of the west, to the dark caves of the east, this world awaits your exploration. But beware, for dangerous creatures and ancient magic lurk around every corner. May fortune be on your side as you embark on this journey.</p></div>',
+                f'''<div class="fantasy-container">
+                <p>🌟 Welcome to the Smooth Talk Squad! 🌟 You've arrived just in time! The Central Park Zoo is in a bit of a pickle — a group of cheeky animals has decided to go on an unexpected city tour, without telling anyone! 😲
+                <br><br>
+                🔍 Your Mission is to use your eagle-eyed super vision and your crystal-clear super voice to spot these adventurous animals. We'll share some sneaky photos from various corners of the city so you can help us look. 📸''',
                 unsafe_allow_html=True,
             )
-
         else:
             st.markdown(
-                f'<div class="fantasy-container"><img src="https://raw.githubusercontent.com/TomJohnH/streamlit-game/main/images/cat.gif" class="image"><p>You are back at the enchanted forest.</p></div>',
+                f'''<div class="fantasy-container">
+                <p>🌟 Welcome to the Smooth Talk Squad! 🌟 You've arrived just in time! The Central Park Zoo is in a bit of a pickle — a group of cheeky animals has decided to go on an unexpected city tour, without telling anyone! 😲
+                <br><br>
+                🔍 Your Mission is to use your eagle-eyed super vision and your crystal-clear super voice to spot these adventurous animals. We'll share some sneaky photos from various corners of the city so you can help us look. 📸''',
                 unsafe_allow_html=True,
             )
 
-    # add some spacing and informative messages
-    col_info, col_space = st.columns([0.57, 0.43])
-    with col_info:
-        st.write('\n')  # add vertical spacer
+    bottom_text = st.columns(1)[0]  # Access the first item in the list returned by st.columns
+    with bottom_text:
+        st.markdown(
+            f'''<div class="fantasy-container">
+            <p>Before we begin, lets practice using the controls below. Press the <strong>START</strong> button and say
+            “Smooth Talk Squad will save the day!” Then press the <strong>STOP</strong> button to stop. Once you have your
+            recording, press <strong>SUBMIT</strong> to send the message to headquarters for analysis. 😎''',
+            unsafe_allow_html=True,
+        )
 
     wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
 
@@ -52,134 +71,74 @@ def introScene():
         if st.button('Send'):
             game_util.getPredictResult()
 
-        if st.button('Next Challenge'):
-            game_util.goToChallenge("sheepScene")
+    if st.button('Next Challenge'):
+        game_util.goToChallenge("peacockScene")
 
 
 ###############################################
 #
-#               sheep Scene
+# Peacock Scene (Scene #2, Formerly Sheep Scene)
 #
 ################################################
 
 
-def sheepScene():
+def peacockScene():
 
-    # possible actions
-    directions = ["left", "right", "back", "pet", "help"]
+    # # possible actions
+    # directions = ["left", "right", "back", "pet", "help"]
 
     col1, col2 = st.columns(2, gap="small")
     with col1:
         # scene image
-        st.image(game_config.image_source["sheepScene"])
-        st.write("Magical sheep")
+        st.image(game_config.image_source["peacockScene"])
     with col2:
         st.markdown(
-            f'<div class="fantasy-container" style="min-height:258.17px"><img src="https://raw.githubusercontent.com/TomJohnH/streamlit-game/main/images/cat.gif" class="image"><p>You see a sheep grazing in a grassy meadow. A gentle mist hangs in the air, and a mystical glow surrounds the area. As you approach the sheep, you notice a magical aura emanating from it. Go on, try to pet it.</p></div>',
+            f'''<div class="fantasy-container" style="min-height:344px" </div>
+            <p>Do you see any of the missing zoo animals in this picture?
+            <br><br>
+            👀 When you spot one of our furry (or feathery) escapees, hit the <strong>START</strong>
+            button to record your message with the coolest, smoothest voice you can muster 😎.''',
             unsafe_allow_html=True,
         )
-        audio_file = open("streamlit/audio/sheep.mp3", "rb")
-        audio_bytes = audio_file.read()
-        st.audio(audio_bytes, format="audio/mpeg")
+    bottom_text = st.columns(1)[0]  # Access the first item in the list returned by st.columns
+    with bottom_text:
+        st.markdown(
+            f'''<div class="fantasy-container">
+            <p>🗣️ Pro Tip: The smoother you speak, the quicker we can reunite these adventurous animals with their home.
+            So, let's make it smooth and bring them back before they start taking selfies in Times Square! 🤳''',
+            unsafe_allow_html=True,
+        )
 
-    # for some reason we have here lenghty interaciton with sheep
+    # audio_file = open("streamlit/audio/sheep.mp3", "rb")
+    # audio_bytes = audio_file.read()
+    # st.audio(audio_bytes, format="audio/mpeg")
 
-    directions_container = st.empty()
+    wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
 
-    # caption below input
-    st.caption(game_config.caption_below_input)
+    if wav_audio_data is not None:
+        # display audio data as received on the Python side
+        col_playback, col_space = st.columns([0.58,0.42])
+        with col_playback:
+            st.audio(wav_audio_data, format='audio/wav')
+        game_util.createAudioFile(wav_audio_data)
 
-    # clearing text_input was suprisingly hard to figure out
-    directions_container.text_input(
-        "What to do?",
-        key="sheepSceneActions",
-        on_change=game_def.clear,
-        args=["sheepSceneActions"],
-    )
+        # Show Send Audio Button
+        if st.button('Send'):
+            game_util.getPredictResult()
 
-    scene_action = st.session_state["temp"]
+    if st.button('Next Challenge'):
+        game_util.goToChallenge("PenguinScene")
 
-    if scene_action.lower() in directions:
-        # --- HELP ---
-        # ------------
-        if scene_action.lower() == "help":
-            st.info(f'Potential actions: {", ".join(directions)}')
-        # --- LEFT ---
-        # ------------
-        if scene_action.lower() == "left":
-            st.write("There is nothing there")
-        # --- BACK OR RIGHT ---
-        # ---------------------
-        if scene_action.lower() == "back" or scene_action.lower() == "right":
-            st.session_state.place = "introScene"
-            game_def.temp_clear()
-            st.experimental_rerun()
-        # ---PET THE SHEEP ---
-        # ---------------------
-        if scene_action.lower() == "pet":
-
-            # progress bar for petting sheep
-            my_bar = st.empty()
-            my_bar.progress(0)
-
-            for percent_complete in range(100):
-                time.sleep(0.01)
-                my_bar.progress(percent_complete + 1)
-            my_bar.empty()
-
-            # --- Sheep shares his wealth ---
-            random_gold = random.randint(4, 8)
-
-            if st.session_state.sheep_anger < 5:
-
-                st.success(
-                    "Sheep goes: streeeeaaamlit and gives you "
-                    + str(random_gold)
-                    + " coins"
-                )
-                st.session_state.gold = st.session_state.gold + random_gold
-
-            # --- Sheep becomes angrier ---
-            st.session_state.sheep_anger = st.session_state.sheep_anger + 1
-
-            if st.session_state.sheep_anger > 2 and st.session_state.sheep_anger < 6:
-                st.success("Sheep is becoming a little bit anoyed ")
-
-            # --- too much pets ---
-            if st.session_state.sheep_anger == 5:
-                st.success(
-                    "Sheep has enough of pets and bites your arm off. You lose 50 HP!"
-                )
-                st.session_state.health = st.session_state.health - 50
-            if st.session_state.sheep_anger > 5 and st.session_state.sheep_anger < 10:
-                random_number_of_dots = random.randint(3, 20)
-                annoyed_sheep = (
-                    "".join("." for i in range(random_number_of_dots)) + "no"
-                )
-                st.success(annoyed_sheep)
-            if st.session_state.sheep_anger >= 10:
-                st.success(
-                    'Sheep states in an unusually low, human voice: "Violence is not an answer, but it could be if you don\'t stop"'
-                )
-
-    else:
-
-        # what should happen if wrong action is selected
-        if scene_action != "":
-            st.info("Please provide right input")
-            dir = f'Potential actions: {", ".join(directions)}'
-            stoggle("Help", dir)
-            st.write("")
 
 
 ###############################################
 #
-#               cave Scene
+# Penguin Scene (Scene #3, Formerly Cave Scene)
 #
 ################################################
 
 
-def caveScene():
+def penguinScene():
 
     # possible actions
     directions = ["up", "back", "help"]
@@ -187,7 +146,7 @@ def caveScene():
     col1, col2 = st.columns(2, gap="small")
     with col1:
         # main_image
-        st.image(game_config.image_source["caveScene"])
+        st.image(game_config.image_source["penguinScene"])
         st.write("Dark cave")
     with col2:
         # scene text

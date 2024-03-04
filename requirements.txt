@@ -1,3 +1,4 @@
 # UI
 streamlit
 streamlit_extras==0.2.4
+streamlit-audiorec
