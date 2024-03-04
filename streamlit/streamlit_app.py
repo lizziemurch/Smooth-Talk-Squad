@@ -10,7 +10,7 @@ import game_scenes
 
 # -------------- app config ---------------
 
-st.set_page_config(page_title="StreamlitLand Adventure RPG", page_icon="🐲")
+st.set_page_config(page_title="Smooth Talk Squad", page_icon="🦸🏻‍♀️")
 
 # define external css
 def local_css(file_name):
@@ -32,24 +32,24 @@ start = False
 # set session states
 # this is streamlit specific. For more contex please check streamlit documenation
 
-if "health" not in st.session_state:
-    st.session_state["health"] = 100
-if "mana" not in st.session_state:
-    st.session_state["mana"] = 80
-if "gold" not in st.session_state:
-    st.session_state["gold"] = 5
+# if "health" not in st.session_state:
+#     st.session_state["health"] = 100
+# if "mana" not in st.session_state:
+#     st.session_state["mana"] = 80
+# if "gold" not in st.session_state:
+#     st.session_state["gold"] = 5
 if "place" not in st.session_state:
     st.session_state["place"] = "introScene"
-if "sheep_anger" not in st.session_state:
-    st.session_state["sheep_anger"] = 0
-if "sword" not in st.session_state:
-    st.session_state["sword"] = 0
-if "dragon_alive" not in st.session_state:
-    st.session_state["dragon_alive"] = 1
-if "dragon_hp" not in st.session_state:
-    st.session_state["dragon_hp"] = 20
-if "temp" not in st.session_state:
-    st.session_state["temp"] = ""
+# if "sheep_anger" not in st.session_state:
+#     st.session_state["sheep_anger"] = 0
+# if "sword" not in st.session_state:
+#     st.session_state["sword"] = 0
+# if "dragon_alive" not in st.session_state:
+#     st.session_state["dragon_alive"] = 1
+# if "dragon_hp" not in st.session_state:
+#     st.session_state["dragon_hp"] = 20
+# if "temp" not in st.session_state:
+#     st.session_state["temp"] = ""
 if "counter" not in st.session_state:
     st.session_state["counter"] = 0
 if "scenes_counter" not in st.session_state:
@@ -77,12 +77,12 @@ local_css("streamlit/style.css")
 
 
 welcome = st.empty()
-welcome.title("Smooth Talk Squad")
+welcome.title("Smooth  Talk  Squad")
 
 if st.session_state.place == "introScene":
     game_scenes.introScene()
-elif st.session_state.place == "sheepScene":
-    game_scenes.sheepScene()
+elif st.session_state.place == "peacockScene":
+    game_scenes.peacockScene()
 elif st.session_state.place == "southpathScene":
     game_scenes.southpathScene()
 elif st.session_state.place == "elfScene":

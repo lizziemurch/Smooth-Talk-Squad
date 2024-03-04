@@ -1,6 +1,7 @@
 # UI
 streamlit
 streamlit_extras==0.2.4
+streamlit-audiorec
 
 numpy==1.23.5
 pandas==1.5.3

@@ -4808,7 +4808,7 @@ a.badge:hover {
 .badge-pill {
   padding-right: 0.6em;
   padding-left: 0.6em;
-  border-radius: 10rem;
+  border-radius: 5rem;
 }
 .badge-primary {
   color: #fff;
