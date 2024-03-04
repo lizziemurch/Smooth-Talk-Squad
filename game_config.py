@@ -4,10 +4,10 @@ caption_below_input = 'Use mouse or [Tab] to focus on input field. To check pote
 image_source = {
     "introScene": "images/Kids-Zoo.png",
     "peacockScene": "images/Peacock-Subway.png",
-    # "caveScene": "images/cave.jpg",
-    # "poScene": "images/po.jpg",
-    # "dragonScene": "images/NNdragon.png",
-    # "libraryScene": "images/library.jpg",
-    # "southpathScene": "images/southpath_small.png",
-    # "elfScene": "images/elf.png",
+    "penguinScene": "images/Penguin-Chinatown.png",
+    "pandaScene": "images/Panda-Diner.png",
+    "foxScene": "images/RedPanda-Bus.png",
+    "monkeyScene": "images/Monkeys-Airport.png",
+    "tortoiseScene": "images/Tortoise-CentralPark.png",
+    "finalScene": "images/Kids-Zoo.png",
 }
