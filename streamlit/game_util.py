@@ -1,7 +1,17 @@
 import streamlit as st
 import requests
-import random
 import wave
+from tensorflow import keras
+import numpy as np
+import os
+from tqdm import tqdm
+from audio.splitter import splitter
+from params import *
+from prediction.preprocessor import preprocess_features
+from prediction.registry import load_model
+
+VOICE_SPLITS_DIRECTORY = os.path.join("audio","splits")
+
 
 def goToChallenge(challenge_name):
     st.session_state.place = (
@@ -10,19 +20,27 @@ def goToChallenge(challenge_name):
     st.experimental_rerun()  # rerun is streamlit specific and rerund the app
 
 def getPredictResult():
-    # Send the voic data to backend
-    url = 'http://localhost:8000/predict/'
-    files = {'file': open('output.wav', 'rb')}
-    response = requests.post(url, files=files)
-    predict_result = response.json()
+    if PREDICT_RESOURCE == 'remote':
+        # Send the voice data to backend
+        url = 'http://localhost:8000/predict/'
+        files = {'file': open('output.wav', 'rb')}
+        response = requests.post(url, files=files)
+        return np.array(response.json()) # expect to be an array of y value
 
-    # We need to change this part when we finalize the response in our API
-    random_number = random.randint(1, 100)
-    if len(predict_result["filename"]) > 0 and (random_number%2) == 0:
-        st.write('Good JOB !')
-        st.balloons()
-    else:
-        st.write('Let\'s try again !')
+    elif PREDICT_RESOURCE == 'local':
+        # Split the audio into clips
+        splitter('output.wav')
+        # Use model to predict
+        model = load_model()
+        assert model is not None
+        model.summary() # Keep for debugging purpose
+        X_processed = preprocess_features()
+        y_pred = model.predict(X_processed)
+        print(f"predict:{y_pred}") # Keep for debugging purpose
+        delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
+        return y_pred
+
+
 
 def createAudioFile(wav_byte_data):
     file_name = "output.wav"
@@ -32,3 +50,14 @@ def createAudioFile(wav_byte_data):
         wf.setsampwidth(2)  # 16-bit
         wf.setframerate(sample_rate)
         wf.writeframes(wav_byte_data)
+
+def delete_files_in_directory(directory_path):
+   try:
+     files = os.listdir(directory_path)
+     for file in files:
+       file_path = os.path.join(directory_path, file)
+       if os.path.isfile(file_path):
+         os.remove(file_path)
+     print(f"All files in {directory_path} deleted successfully.")
+   except OSError:
+     print("Error occurred while deleting files.")

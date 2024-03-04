@@ -163,3 +163,7 @@ cython_debug/
 # streamlit
 streamlit/.streamlit/secrets.toml
 __pycache__/
+
+# audio
+output.wav
+audio/splits/*

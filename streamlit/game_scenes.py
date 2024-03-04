@@ -6,6 +6,7 @@ import time
 import random
 from st_audiorec import st_audiorec
 import game_util
+from params import *
 
 ###############################################
 #
@@ -50,7 +51,13 @@ def introScene():
 
         # Show Send Audio Button
         if st.button('Send'):
-            game_util.getPredictResult()
+            y_pred = game_util.getPredictResult()
+            print(y_pred)
+            if any(y > float(Y_THRESHOLD) for y in y_pred):
+                st.write('Let\'s try again !')
+            else:
+                st.write('Good JOB !')
+                st.balloons()
 
         if st.button('Next Challenge'):
             game_util.goToChallenge("sheepScene")
