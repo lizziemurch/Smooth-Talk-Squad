@@ -1,14 +1,8 @@
-import glob
 import os
-import time
-import pickle
 
 from colorama import Fore, Style
 from tensorflow import keras
-from google.cloud import storage
 from params import *
-import mlflow
-from mlflow.tracking import MlflowClient
 
 def load_model() -> keras.Model:
     """
@@ -18,13 +12,13 @@ def load_model() -> keras.Model:
 
     Return None (but do not Raise) if no model is found
     """
-    if MODEL_TARGET == "local":
-        print(Fore.BLUE + f"\nLoad latest model from local registry..." + Style.RESET_ALL)
-        model = keras.models.load_model(os.path.join('prediction','models','first_model_v2.h5'))
-        return model
+    # if MODEL_TARGET == "local":
+    print(Fore.BLUE + f"\nLoad latest model from local registry..." + Style.RESET_ALL)
+    model = keras.models.load_model(os.path.join('prediction','models','model_prolong.h5'))
+    return model
 
     # TO BE CONTINUE ...
-    elif MODEL_TARGET == "gcs":
+    # elif MODEL_TARGET == "gcs":
         # # 🎁 We give you this piece of code as a gift. Please read it carefully! Add a breakpoint if needed!
         # print(Fore.BLUE + f"\nLoad latest model from GCS..." + Style.RESET_ALL)
 
@@ -45,4 +39,4 @@ def load_model() -> keras.Model:
         #     print(f"\n❌ No model found in GCS bucket {BUCKET_NAME}")
 
             # return None
-        pass
+        # pass
