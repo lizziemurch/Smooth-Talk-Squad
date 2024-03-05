@@ -6,9 +6,6 @@ import librosa
 def preprocess_features(directory = os.path.join('voice','splits')) -> np.ndarray:
 
     mfcc_features = []
-    # directory = os.path.join('voice','splits')
-    # directory = os.path.join('voice','splits_test','isStutter')
-
 
     for clip in tqdm(os.listdir(directory)):
         audio, sample_rate = librosa.load(os.path.join(directory, clip) , sr=8000)
