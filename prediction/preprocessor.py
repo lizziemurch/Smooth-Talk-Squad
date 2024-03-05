@@ -16,5 +16,4 @@ def preprocess_features(directory = os.path.join('voice','splits')) -> np.ndarra
         else:
             print(f"{clip}:{mfccs.shape}")
     x_mfcc = np.stack(mfcc_features)
-
-    return x_mfcc
+    return np.transpose(x_mfcc, (0, 2, 1))
