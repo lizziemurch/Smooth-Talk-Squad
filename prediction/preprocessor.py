@@ -3,11 +3,11 @@ import os
 from tqdm import tqdm
 import librosa
 
-def preprocess_features() -> np.ndarray:
+def preprocess_features(directory = os.path.join('voice','splits')) -> np.ndarray:
 
     mfcc_features = []
     # directory = os.path.join('voice','splits')
-    directory = os.path.join('voice','splits_test','isStutter')
+    # directory = os.path.join('voice','splits_test','isStutter')
 
 
     for clip in tqdm(os.listdir(directory)):

@@ -83,7 +83,7 @@ def introScene():
         game_util.goToChallenge("peacockScene")
 
     if st.button('Predict with Stuttering Clips'):
-        y_pred = game_util.getPredictResult()
+        y_pred = game_util.getPredictResultWithAllStutter()
         if any(y > 0.6 for y in y_pred):
             st.write('Let\'s try again !')
         else:

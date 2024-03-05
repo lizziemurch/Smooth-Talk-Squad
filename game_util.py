@@ -44,7 +44,17 @@ def getPredictResult():
     delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
     return y_pred
 
-
+def getPredictResultWithAllStutter():
+    directory = os.path.join('voice','splits_test','isStutter')
+    model = load_model()
+    assert model is not None
+    # st.write(model.summary()) # Keep for debugging purpose
+    X_processed = preprocess_features(directory)
+    # st.write(X_processed)
+    y_pred = model.predict(X_processed)
+    st.write(f"predict:{y_pred}") # Keep for debugging purpose
+    delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
+    return y_pred
 
 def createAudioFile(wav_byte_data):
     if not os.path.exists(VOICE_RECORD_DIRECTORY):
