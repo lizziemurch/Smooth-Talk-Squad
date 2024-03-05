@@ -83,18 +83,18 @@ if st.session_state.place == "introScene":
     game_scenes.introScene()
 elif st.session_state.place == "peacockScene":
     game_scenes.peacockScene()
-# elif st.session_state.place == "southpathScene":
-#     game_scenes.southpathScene()
-# elif st.session_state.place == "elfScene":
-#     game_scenes.elfScene()
-# elif st.session_state.place == "caveScene":
-#     game_scenes.caveScene()
-# elif st.session_state.place == "poScene":
-#     game_scenes.poScene()
-# elif st.session_state.place == "dragonScene":
-#     game_scenes.dragonScene()
-# elif st.session_state.place == "libraryScene":
-#     game_scenes.libraryScene()
+elif st.session_state.place == "penguinScene":
+    game_scenes.penguinScene()
+elif st.session_state.place == "pandaScene":
+    game_scenes.pandaScene()
+elif st.session_state.place == "foxScene":
+    game_scenes.foxScene()
+elif st.session_state.place == "monkeyScene":
+    game_scenes.monkeyScene()
+elif st.session_state.place == "tortoiseScene":
+    game_scenes.tortoiseScene()
+elif st.session_state.place == "finalScene":
+    game_scenes.finalScene()
 
 components.html(
     f"""
