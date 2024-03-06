@@ -185,10 +185,6 @@ def peacockScene():
 
 
 
-
-
-
-
     if st.button('Next Challenge'):
         game_util.goToChallenge("penguinScene")
 

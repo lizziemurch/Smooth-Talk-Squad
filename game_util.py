@@ -55,12 +55,12 @@ def getPredictResultWithAllStutter():
     # st.write(X_processed)
     y_pred = model.predict(X_processed)
     st.write(f"predict:{y_pred}") # Keep for debugging purpose
-    # delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
+    delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
     return y_pred
 
 def getPredictResultDemo1():
     split_video(VOICE_DEMO1_FILEPATH)
-    # directory = os.path.join('voice','pre_recorded','demo1')
+
     model = load_model()
     assert model is not None
     # st.write(model.summary()) # Keep for debugging purpose
@@ -68,12 +68,11 @@ def getPredictResultDemo1():
     # st.write(X_processed)
     y_pred = model.predict(X_processed)
     st.write(f"predict:{y_pred}") # Keep for debugging purpose
-    # delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
+    delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
     return y_pred
 
 def getPredictResultDemo2():
     split_video(VOICE_DEMO2_FILEPATH)
-    # directory = os.path.join('voice','pre_recorded','demo1')
     model = load_model()
     assert model is not None
     # st.write(model.summary()) # Keep for debugging purpose
@@ -81,7 +80,7 @@ def getPredictResultDemo2():
     # st.write(X_processed)
     y_pred = model.predict(X_processed)
     st.write(f"predict:{y_pred}") # Keep for debugging purpose
-    # delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
+    delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
     return y_pred
 
 def createAudioFile(wav_byte_data):
