@@ -69,8 +69,9 @@ def introScene():
 
         # Show Send Audio Button
         if st.button('Send'):
+            game_util.delete_files_in_directory(os.path.join("voice","splits"))
             y_pred = game_util.getPredictResult()
-            if any(y > 0.6 for y in y_pred):
+            if any(y > 0.4 for y in y_pred):
                 st.write('Let\'s try again !')
             else:
                 st.write('Good JOB !')
@@ -81,7 +82,7 @@ def introScene():
 
     if st.button('Predict with Stuttering Clips'):
         y_pred = game_util.getPredictResultWithAllStutter()
-        if any(y > 0.6 for y in y_pred):
+        if any(y > 0.4 for y in y_pred):
             st.write('Let\'s try again !')
         else:
             st.write('Good JOB !')

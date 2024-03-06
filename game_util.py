@@ -45,7 +45,7 @@ def getPredictResult():
     return y_pred
 
 def getPredictResultWithAllStutter():
-    directory = os.path.join('voice','splits_test','isStutter')
+    directory = os.path.join('voice','splits_test','isSoundRep')
     model = load_model()
     assert model is not None
     # st.write(model.summary()) # Keep for debugging purpose

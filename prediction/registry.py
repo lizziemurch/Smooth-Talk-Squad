@@ -14,7 +14,7 @@ def load_model() -> keras.Model:
     """
     # if MODEL_TARGET == "local":
     print(Fore.BLUE + f"\nLoad latest model from local registry..." + Style.RESET_ALL)
-    model = keras.models.load_model(os.path.join('prediction','models','model_prolong.h5'))
+    model = keras.models.load_model(os.path.join('prediction','models', 'experimental_model.tf/'))
     return model
 
     # TO BE CONTINUE ...
