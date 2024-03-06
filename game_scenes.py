@@ -80,12 +80,41 @@ def introScene():
     if st.button('Next Challenge'):
         game_util.goToChallenge("peacockScene")
 
+
     if st.button('Predict with Stuttering Clips'):
         y_pred = game_util.getPredictResultWithAllStutter()
         if any(y > 0.4 for y in y_pred):
             st.write('Let\'s try again !')
         else:
             st.write('Good JOB !')
+            st.balloons()
+
+
+
+    # Pre-recorded voice for demo1
+    audio_file = open("voice/pre_recorded/demo1/first_girl.wav", "rb")
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format="audio/mpeg")
+
+    if st.button('Predict with Demo1 Clip'):
+        y_pred = game_util.getPredictResultDemo1()
+        if any(y > 0.4 for y in y_pred):
+            st.header('Let\'s try again 🤔!')
+        else:
+            st.header('Good JOB 🏆!')
+            st.balloons()
+
+    # Pre-recorded voice for demo2
+    audio_file = open("voice/pre_recorded/demo2/Ruby_smooth_turtle.wav", "rb")
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format="audio/mpeg")
+
+    if st.button('Predict with Demo2 Clip'):
+        y_pred = game_util.getPredictResultDemo2()
+        if any(y > 0.4 for y in y_pred):
+            st.header('Let\'s try again 🤔!')
+        else:
+            st.header('Good JOB 🏆!')
             st.balloons()
 
 ###############################################
@@ -95,6 +124,7 @@ def introScene():
 ################################################
 
 def peacockScene():
+    game_util.delete_files_in_directory(os.path.join("voice","splits"))
     st.markdown(
         """
         <style>
@@ -145,12 +175,15 @@ def peacockScene():
 
         # Show Send Audio Button
         if st.button('Send'):
+            game_util.delete_files_in_directory(os.path.join("voice","splits"))
             y_pred = game_util.getPredictResult()
-            if any(y > 0.6 for y in y_pred):
+            if any(y > 0.4 for y in y_pred):
                 st.write('Let\'s try again !')
             else:
                 st.write('Good JOB !')
                 st.balloons()
+
+
 
     if st.button('Next Challenge'):
         game_util.goToChallenge("penguinScene")
@@ -162,6 +195,7 @@ def peacockScene():
 ################################################
 
 def penguinScene():
+    game_util.delete_files_in_directory(os.path.join("voice","splits"))
     st.markdown(
         """
         <style>
@@ -230,6 +264,7 @@ def penguinScene():
 ################################################
 
 def pandaScene():
+    game_util.delete_files_in_directory(os.path.join("voice","splits"))
     st.markdown(
         """
         <style>
@@ -297,6 +332,7 @@ def pandaScene():
 ################################################
 
 def foxScene():
+    game_util.delete_files_in_directory(os.path.join("voice","splits"))
     st.markdown(
         """
         <style>
@@ -364,6 +400,7 @@ def foxScene():
 ################################################
 
 def monkeyScene():
+    game_util.delete_files_in_directory(os.path.join("voice","splits"))
     st.markdown(
         """
         <style>
@@ -431,6 +468,8 @@ def monkeyScene():
 ################################################
 
 def tortoiseScene():
+
+    game_util.delete_files_in_directory(os.path.join("voice","splits"))
     st.markdown(
         """
         <style>
@@ -498,6 +537,7 @@ def tortoiseScene():
 ################################################
 
 def finalScene():
+    game_util.delete_files_in_directory(os.path.join("voice","splits"))
     st.markdown(
         """
         <style>
