@@ -68,10 +68,11 @@ def introScene():
         game_util.createAudioFile(wav_audio_data)
 
         # Show Send Audio Button
-        if st.button('Send'):
+        if st.button('Send to Headquarters'):
             game_util.delete_files_in_directory(os.path.join("voice","splits"))
             y_pred = game_util.getPredictResult()
             if any(y > 0.4 for y in y_pred):
+
                 st.write('Let\'s try again !')
             else:
                 st.write('Good JOB !')
@@ -128,58 +129,66 @@ def peacockScene():
         So, let's make it smooth and bring them back before they start taking selfies in Times Square! 🤳''',
         unsafe_allow_html=True,
         )
-
-    wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
 
     if wav_audio_data is not None:
-        # display audio data as received on the Python side
-        col_playback, col_space = st.columns([0.58,0.42])
-        with col_playback:
-            st.audio(wav_audio_data, format='audio/wav')
         game_util.createAudioFile(wav_audio_data)
+        with col2:
+            # Show Send Audio Button
+            st.write(" ")
+            st.write(" ")
+            if st.button('Send to HQ'):
+                game_util.delete_files_in_directory(os.path.join("voice","splits"))
+                y_pred = game_util.getPredictResult()
+                if any(y > 0.8 for y in y_pred):
+                    st.write('Let\'s try again !')
+                else:
+                    st.write('Good JOB !')
+                    st.balloons()
+            st.write(" ")
+            st.write(" ")
+            st.write(" ")
+            if st.button('Next Challenge'):
+                game_util.goToChallenge("penguinScene")
 
-        # Show Send Audio Button
-        if st.button('Send'):
-            game_util.delete_files_in_directory(os.path.join("voice","splits"))
-            y_pred = game_util.getPredictResult()
-            if any(y > 0.7 for y in y_pred):
-                st.write('Let\'s try again !')
-            else:
-                st.write('Good JOB !')
-                st.balloons()
+    st.divider()
 
-
+    st.subheader("DEMO")
 
     # Pre-recorded voice for demo1
     audio_file = open("voice/pre_recorded/demo1/first_girl.wav", "rb")
     audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format="audio/mpeg")
+    col1, col2 = st.columns([2, 3])
+    with col1:
+        st.audio(audio_bytes, format="audio/mpeg")
 
-    if st.button('Predict with Demo1 Clip'):
-        y_pred = game_util.getPredictResultDemo1()
-        if any(y > 0.8 for y in y_pred):
-            st.header('Let\'s try again 🤔!')
-        else:
-            st.header('Good JOB 🏆!')
-            st.balloons()
+    with col2:
+        if st.button('Stuttering Clip Demo'):
+            y_pred = game_util.getPredictResultDemo1()
+
+            if any(y > 0.8 for y in y_pred):
+                st.header('Let\'s try again 🤔!')
+            else:
+                st.header('Good JOB 🏆!')
+                st.balloons()
 
     # Pre-recorded voice for demo2
     audio_file = open("voice/pre_recorded/demo2/Lizzie_peacock_smooth.wav", "rb")
     audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format="audio/mpeg")
+    col1, col2 = st.columns([2, 3])
+    with col1:
+        st.audio(audio_bytes, format="audio/mpeg")
+    with col2:
+        if st.button('Smooth Clip Demo'):
+            y_pred = game_util.getPredictResultDemo2()
+            if any(y > 0.8 for y in y_pred):
+                st.header('Let\'s try again 🤔!')
+            else:
+                st.header('Good JOB 🏆!')
+                st.balloons()
 
-    if st.button('Predict with Demo2 Clip'):
-        y_pred = game_util.getPredictResultDemo2()
-        if any(y > 0.8 for y in y_pred):
-            st.header('Let\'s try again 🤔!')
-        else:
-            st.header('Good JOB 🏆!')
-            st.balloons()
-
-
-
-    if st.button('Next Challenge'):
-        game_util.goToChallenge("penguinScene")
 
 ###############################################
 #
