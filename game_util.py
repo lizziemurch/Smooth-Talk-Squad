@@ -38,9 +38,7 @@ def getPredictResult():
         # Use model to predict
     model = load_model()
     assert model is not None
-    # st.write(model.summary()) # Keep for debugging purpose
     X_processed = preprocess_features()
-    # st.write(X_processed)
     y_pred = model.predict(X_processed)
     st.write(f"predict:{y_pred}") # Keep for debugging purpose
     delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
@@ -50,9 +48,7 @@ def getPredictResultWithAllStutter():
     directory = os.path.join('voice','splits_test','isSoundRep')
     model = load_model()
     assert model is not None
-    # st.write(model.summary()) # Keep for debugging purpose
     X_processed = preprocess_features(directory)
-    # st.write(X_processed)
     y_pred = model.predict(X_processed)
     st.write(f"predict:{y_pred}") # Keep for debugging purpose
     delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
@@ -63,9 +59,7 @@ def getPredictResultDemo1():
 
     model = load_model()
     assert model is not None
-    # st.write(model.summary()) # Keep for debugging purpose
     X_processed = preprocess_features()
-    # st.write(X_processed)
     y_pred = model.predict(X_processed)
     st.write(f"predict:{y_pred}") # Keep for debugging purpose
     delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
@@ -75,9 +69,7 @@ def getPredictResultDemo2():
     split_video(VOICE_DEMO2_FILEPATH)
     model = load_model()
     assert model is not None
-    # st.write(model.summary()) # Keep for debugging purpose
     X_processed = preprocess_features()
-    # st.write(X_processed)
     y_pred = model.predict(X_processed)
     st.write(f"predict:{y_pred}") # Keep for debugging purpose
     delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
