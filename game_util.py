@@ -14,7 +14,7 @@ VOICE_SPLITS_DIRECTORY = os.path.join("voice","splits")
 VOICE_RECORD_DIRECTORY = os.path.join("voice","records")
 VOICE_RECORD_FILEPATH = os.path.join('voice','records','output.wav')
 VOICE_DEMO1_FILEPATH = os.path.join("voice","pre_recorded","demo1","first_girl.wav")
-VOICE_DEMO2_FILEPATH = os.path.join("voice","pre_recorded","demo2","Ruby_smooth_turtle.wav")
+VOICE_DEMO2_FILEPATH = os.path.join("voice","pre_recorded","demo2","Lizzie_peacock_smooth.wav")
 
 def goToChallenge(challenge_name):
     st.session_state.place = (
