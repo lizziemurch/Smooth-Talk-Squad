@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 # Start web server
 ```
-streamlit run streamlit/streamlit_app.py
+streamlit run streamlit_app.py
 ```
 
 # Datasets
