@@ -119,15 +119,17 @@ def peacockScene():
             st.audio(audio_bytes, format="audio/mpeg")
 
         with col2:
-            if st.button('Send demo to HQ'):
-                game_util.delete_files_in_directory(os.path.join("voice","splits"))
-                y_pred = game_util.getPredictResult()
-
-                if any(y > 0.8 for y in y_pred):
-                    st.header('Let\'s try again 🤔!')
-                else:
-                    st.header('Good JOB 🏆!')
-                    st.balloons()
+            message_holder = st.empty()
+            col2_1, col2_2 = st.columns(2, gap="small")
+            with col2_2:
+                if st.button('Send to HQ', key='demo'):
+                    game_util.delete_files_in_directory(os.path.join("voice","splits"))
+                    y_pred = game_util.getPredictResult()
+                    if any(y > 0.8 for y in y_pred):
+                        message_holder.header('Let\'s try again 🤔!')
+                    else:
+                        message_holder.header('Good JOB 🏆!')
+                        st.balloons()
 
 
 ###############################################
@@ -438,27 +440,27 @@ def voiceRecordingInterface():
     col1, col2 = st.columns([2, 1])
     with col1:
         wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
-
     with col2:
+        message_holder = st.empty()
+        col2_1, col2_2 = st.columns([1, 1])
         # Show Send Audio Button
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Send to HQ'):
-            if wav_audio_data is not None:
-                game_util.createAudioFile(wav_audio_data)
-                game_util.delete_files_in_directory(os.path.join("voice","splits"))
-                y_pred = game_util.getPredictResult()
-                if any(y > 0.8 for y in y_pred):
-                    st.header('Let\'s try again 🤔!')
+        with col2_2:
+            st.write(" ")
+            if st.button('Send to HQ', key='main'):
+                if wav_audio_data is not None:
+                    game_util.createAudioFile(wav_audio_data)
+                    game_util.delete_files_in_directory(os.path.join("voice","splits"))
+                    y_pred = game_util.getPredictResult()
+                    if any(y > 0.8 for y in y_pred):
+                        message_holder.header('Let\'s try again 🤔!')
+                    else:
+                        message_holder.header('Good JOB 🏆!')
+                        st.balloons()
                 else:
-                    st.header('Good JOB 🏆!')
-                    st.balloons()
-            else:
-                st.write("Please record your voice")
+                    st.write("Please record your voice")
 
 def pageNavigationInterface(previousScene=None, nextScene=None):
-    col1, col2, col3 = st.columns([1, 1, 1])
+    col1, col2, col3 = st.columns([1, 3, 1])
     with col1:
         if previousScene is not None:
             if st.button('Back'):
