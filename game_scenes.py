@@ -110,8 +110,8 @@ def peacockScene():
 
     st.subheader("UPLOAD")
 
-    audio_file = uploaded_file = st.file_uploader("Choose a file")
-    if uploaded_file is not None:
+    audio_file = st.file_uploader("Choose a file")
+    if audio_file is not None:
         audio_bytes = audio_file.read()
         game_util.createAudioFile(audio_bytes)
         col1, col2 = st.columns([1.5, 1])
@@ -119,7 +119,7 @@ def peacockScene():
             st.audio(audio_bytes, format="audio/mpeg")
 
         with col2:
-            if st.button('Send .wav to HQ'):
+            if st.button('Send demo to HQ'):
                 game_util.delete_files_in_directory(os.path.join("voice","splits"))
                 y_pred = game_util.getPredictResult()
 
@@ -334,7 +334,6 @@ def monkeyScene():
 ################################################
 
 def tortoiseScene():
-
     game_util.delete_files_in_directory(os.path.join("voice","splits"))
     st.markdown(
         """
@@ -457,9 +456,6 @@ def voiceRecordingInterface():
                     st.balloons()
             else:
                 st.write("Please record your voice")
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
 
 def pageNavigationInterface(previousScene=None, nextScene=None):
     col1, col2, col3 = st.columns([1, 1, 1])
