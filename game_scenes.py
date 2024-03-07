@@ -1,9 +1,6 @@
 import streamlit as st
 from streamlit_extras.stoggle import stoggle
 import game_config
-import game_def
-import time
-import random
 from st_audiorec import st_audiorec
 import game_util
 from params import *
@@ -57,32 +54,8 @@ def introScene():
             recording, press <strong>SUBMIT</strong> to send the message to headquarters for analysis. 😎''',
             unsafe_allow_html=True,
         )
-
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
-
-    if wav_audio_data is not None:
-        game_util.createAudioFile(wav_audio_data)
-    with col2:
-        # Show Send Audio Button
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Send to HQ'):
-            game_util.delete_files_in_directory(os.path.join("voice","splits"))
-            y_pred = game_util.getPredictResult()
-            if any(y > 0.8 for y in y_pred):
-                st.header(' c\'s try again 🤔!')
-            else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Next Challenge'):
-            game_util.goToChallenge("peacockScene")
-
+    voiceRecordingInterface()
+    pageNavigationInterface(None, "peacockScene")
 
 ###############################################
 #
@@ -130,70 +103,31 @@ def peacockScene():
         So, let's make it smooth and bring them back before they start taking selfies in Times Square! 🤳''',
         unsafe_allow_html=True,
         )
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
-
-    if wav_audio_data is not None:
-        game_util.createAudioFile(wav_audio_data)
-    with col2:
-        # Show Send Audio Button
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Send to HQ'):
-            game_util.delete_files_in_directory(os.path.join("voice","splits"))
-            y_pred = game_util.getPredictResult()
-            if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
-            else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Next Challenge'):
-            game_util.goToChallenge("penguinScene")
-    if st.button('Back'):
-        game_util.goToChallenge("introScene")
+    voiceRecordingInterface()
+    pageNavigationInterface("introScene", "penguinScene")
 
     st.divider()
 
-    st.subheader("DEMO")
+    st.subheader("UPLOAD")
 
-    # Pre-recorded voice for demo1
-    st.write('Demo1')
-    audio_file = open("voice/pre_recorded/demo1/first_girl.wav", "rb")
-    audio_bytes = audio_file.read()
-    col1, col2 = st.columns([2, 3])
-    with col1:
-        st.audio(audio_bytes, format="audio/mpeg")
+    audio_file = uploaded_file = st.file_uploader("Choose a file")
+    if uploaded_file is not None:
+        audio_bytes = audio_file.read()
+        game_util.createAudioFile(audio_bytes)
+        col1, col2 = st.columns([1.5, 1])
+        with col1:
+            st.audio(audio_bytes, format="audio/mpeg")
 
-    with col2:
-        if st.button('Send Demo1 Clip to HQ'):
-            y_pred = game_util.getPredictResultDemo1()
+        with col2:
+            if st.button('Send .wav to HQ'):
+                game_util.delete_files_in_directory(os.path.join("voice","splits"))
+                y_pred = game_util.getPredictResult()
 
-            if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
-            else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
-
-    # Pre-recorded voice for demo2
-    st.write('Demo2')
-    audio_file = open("voice/pre_recorded/demo2/Ruby_smooth.wav", "rb")
-    audio_bytes = audio_file.read()
-    col1, col2 = st.columns([2, 3])
-    with col1:
-        st.audio(audio_bytes, format="audio/mpeg")
-    with col2:
-        if st.button('Send Demo2 Clip to HQ'):
-            y_pred = game_util.getPredictResultDemo2()
-            if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
-            else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
+                if any(y > 0.8 for y in y_pred):
+                    st.header('Let\'s try again 🤔!')
+                else:
+                    st.header('Good JOB 🏆!')
+                    st.balloons()
 
 
 ###############################################
@@ -242,35 +176,8 @@ def penguinScene():
         So, let's make it smooth and bring them back before they start taking selfies in Times Square! 🤳''',
         unsafe_allow_html=True,
         )
-
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
-
-    if wav_audio_data is not None:
-        game_util.createAudioFile(wav_audio_data)
-    with col2:
-        # Show Send Audio Button
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Send to HQ'):
-            game_util.delete_files_in_directory(os.path.join("voice","splits"))
-            y_pred = game_util.getPredictResult()
-            if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
-            else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Next Challenge'):
-            game_util.goToChallenge("pandaScene")
-    if st.button('Back'):
-        game_util.goToChallenge("peacockScene")
-
-
+    voiceRecordingInterface()
+    pageNavigationInterface("peacockScene", "pandaScene")
 
 ###############################################
 #
@@ -318,33 +225,8 @@ def pandaScene():
         So, let's make it smooth and bring them back before they start taking selfies in Times Square! 🤳''',
         unsafe_allow_html=True,
         )
-
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
-
-    if wav_audio_data is not None:
-        game_util.createAudioFile(wav_audio_data)
-    with col2:
-        # Show Send Audio Button
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Send to HQ'):
-            game_util.delete_files_in_directory(os.path.join("voice","splits"))
-            y_pred = game_util.getPredictResult()
-            if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
-            else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Next Challenge'):
-            game_util.goToChallenge("foxScene")
-    if st.button('Back'):
-        game_util.goToChallenge("penguinScene")
+    voiceRecordingInterface()
+    pageNavigationInterface("penguinScene", "foxScene")
 
 ###############################################
 #
@@ -393,36 +275,12 @@ def foxScene():
         unsafe_allow_html=True,
         )
 
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
-
-    if wav_audio_data is not None:
-        game_util.createAudioFile(wav_audio_data)
-    with col2:
-        # Show Send Audio Button
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Send to HQ'):
-            game_util.delete_files_in_directory(os.path.join("voice","splits"))
-            y_pred = game_util.getPredictResult()
-            if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
-            else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Next Challenge'):
-            game_util.goToChallenge("monkeyScene")
-    if st.button('Back'):
-        game_util.goToChallenge("pandaScene")
+    voiceRecordingInterface()
+    pageNavigationInterface("pandaScene", "monkeyScene")
 
 ###############################################
 #
-# Panda Scene (Scene #6)
+# Monkey Scene (Scene #6)
 #
 ################################################
 
@@ -466,33 +324,9 @@ def monkeyScene():
         So, let's make it smooth and bring them back before they start taking selfies in Times Square! 🤳''',
         unsafe_allow_html=True,
         )
+    voiceRecordingInterface()
+    pageNavigationInterface("foxScene", "tortoiseScene")
 
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
-
-    if wav_audio_data is not None:
-        game_util.createAudioFile(wav_audio_data)
-    with col2:
-        # Show Send Audio Button
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Send to HQ'):
-            game_util.delete_files_in_directory(os.path.join("voice","splits"))
-            y_pred = game_util.getPredictResult()
-            if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
-            else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Next Challenge'):
-            game_util.goToChallenge("tortoiseScene")
-    if st.button('Back'):
-        game_util.goToChallenge("finalScene")
 ###############################################
 #
 # Tortoise Scene (Scene #7)
@@ -540,33 +374,9 @@ def tortoiseScene():
         So, let's make it smooth and bring them back before they start taking selfies in Times Square! 🤳''',
         unsafe_allow_html=True,
         )
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
 
-    if wav_audio_data is not None:
-        game_util.createAudioFile(wav_audio_data)
-    with col2:
-        # Show Send Audio Button
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Send to HQ'):
-            game_util.delete_files_in_directory(os.path.join("voice","splits"))
-            y_pred = game_util.getPredictResult()
-            if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
-            else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
-        st.write(" ")
-        st.write(" ")
-        st.write(" ")
-        if st.button('Next Challenge'):
-            game_util.goToChallenge("finalScene")
-    if st.button('Back'):
-        game_util.goToChallenge("monkeyScene")
-
+    voiceRecordingInterface()
+    pageNavigationInterface("monkeyScene", "finalScene")
 
 ###############################################
 #
@@ -622,29 +432,42 @@ def finalScene():
         🌍✨ The Smooth Talk Squad will return... and we hope you will too!''',
         unsafe_allow_html=True,
         )
+    voiceRecordingInterface()
+    pageNavigationInterface("tortoiseScene", None)
 
+def voiceRecordingInterface():
     col1, col2 = st.columns([2, 1])
     with col1:
         wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
 
-    if wav_audio_data is not None:
-        game_util.createAudioFile(wav_audio_data)
     with col2:
         # Show Send Audio Button
         st.write(" ")
         st.write(" ")
         st.write(" ")
         if st.button('Send to HQ'):
-            game_util.delete_files_in_directory(os.path.join("voice","splits"))
-            y_pred = game_util.getPredictResult()
-            if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
+            if wav_audio_data is not None:
+                game_util.createAudioFile(wav_audio_data)
+                game_util.delete_files_in_directory(os.path.join("voice","splits"))
+                y_pred = game_util.getPredictResult()
+                if any(y > 0.8 for y in y_pred):
+                    st.header('Let\'s try again 🤔!')
+                else:
+                    st.header('Good JOB 🏆!')
+                    st.balloons()
             else:
-                st.header('Good JOB 🏆!')
-                st.balloons()
+                st.write("Please record your voice")
         st.write(" ")
         st.write(" ")
         st.write(" ")
 
-    if st.button('Back'):
-        game_util.goToChallenge("monkeyScene")
+def pageNavigationInterface(previousScene=None, nextScene=None):
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        if previousScene is not None:
+            if st.button('Back'):
+                game_util.goToChallenge(previousScene)
+    with col3:
+        if nextScene is not None:
+            if st.button('Next Challenge'):
+                game_util.goToChallenge(nextScene)
