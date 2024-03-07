@@ -1,11 +1,10 @@
 import streamlit as st
-import requests
 import wave
 from tensorflow import keras
 import numpy as np
 import os
 from tqdm import tqdm
-from voice.splitter import split_video
+from voice.splitter import split_audio
 from params import *
 from prediction.preprocessor import preprocess_features
 from prediction.registry import load_model
@@ -23,18 +22,10 @@ def goToChallenge(challenge_name):
     st.experimental_rerun()  # rerun is streamlit specific and rerund the app
 
 def getPredictResult():
-    # if PREDICT_RESOURCE == 'remote':
-    #     # Send the voice data to backend
-    #     url = 'http://localhost:8000/predict/'
-    #     files = {'file': open('output.wav', 'rb')}
-    #     response = requests.post(url, files=files)
-    #     return np.array(response.json()) # expect to be an array of y value
-
-    # elif PREDICT_RESOURCE == 'local':
     if not os.path.exists(VOICE_SPLITS_DIRECTORY):
         os.makedirs(VOICE_SPLITS_DIRECTORY)
         # Split the audio into clips
-    split_video(VOICE_RECORD_FILEPATH)
+    split_audio(VOICE_RECORD_FILEPATH)
         # Use model to predict
     model = load_model()
     assert model is not None
@@ -55,7 +46,7 @@ def getPredictResultWithAllStutter():
     return y_pred
 
 def getPredictResultDemo1():
-    split_video(VOICE_DEMO1_FILEPATH)
+    split_audio(VOICE_DEMO1_FILEPATH)
 
     model = load_model()
     assert model is not None
@@ -66,7 +57,7 @@ def getPredictResultDemo1():
     return y_pred
 
 def getPredictResultDemo2():
-    split_video(VOICE_DEMO2_FILEPATH)
+    split_audio(VOICE_DEMO2_FILEPATH)
     model = load_model()
     assert model is not None
     X_processed = preprocess_features()

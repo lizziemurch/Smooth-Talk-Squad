@@ -2,10 +2,9 @@ from pydub import AudioSegment
 import wave
 import os
 
-def split_video(file_location) -> None:
+def split_audio(file_location) -> None:
     start=0
     end=3000
-    # filenme=filename
     wavfile = wave.open(file_location)
     frames = wavfile.getnframes()
     rate = wavfile.getframerate()
