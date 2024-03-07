@@ -118,7 +118,6 @@ def peacockScene():
         with col1:
             st.audio(audio_bytes, format="audio/mpeg")
 
-
         with col2:
             message_hodler = st.empty()
             col2_1, col2_2 = st.columns(2, gap="small")
@@ -131,8 +130,6 @@ def peacockScene():
                     else:
                         message_hodler.header('Good JOB 🏆!')
                         st.balloons()
-
-
 
 
 ###############################################
