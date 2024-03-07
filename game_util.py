@@ -14,7 +14,7 @@ VOICE_SPLITS_DIRECTORY = os.path.join("voice","splits")
 VOICE_RECORD_DIRECTORY = os.path.join("voice","records")
 VOICE_RECORD_FILEPATH = os.path.join('voice','records','output.wav')
 VOICE_DEMO1_FILEPATH = os.path.join("voice","pre_recorded","demo1","first_girl.wav")
-VOICE_DEMO2_FILEPATH = os.path.join("voice","pre_recorded","demo2","Lizzie_peacock_smooth.wav")
+VOICE_DEMO2_FILEPATH = os.path.join("voice","pre_recorded","demo2","Ruby_smooth.wav")
 
 def goToChallenge(challenge_name):
     st.session_state.place = (
@@ -40,7 +40,7 @@ def getPredictResult():
     assert model is not None
     X_processed = preprocess_features()
     y_pred = model.predict(X_processed)
-    st.write(f"predict:{y_pred}") # Keep for debugging purpose
+    # st.write(f"predict:{y_pred}") # Keep for debugging purpose
     delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
     return y_pred
 
@@ -50,7 +50,7 @@ def getPredictResultWithAllStutter():
     assert model is not None
     X_processed = preprocess_features(directory)
     y_pred = model.predict(X_processed)
-    st.write(f"predict:{y_pred}") # Keep for debugging purpose
+    # st.write(f"predict:{y_pred}") # Keep for debugging purpose
     delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
     return y_pred
 
@@ -61,7 +61,7 @@ def getPredictResultDemo1():
     assert model is not None
     X_processed = preprocess_features()
     y_pred = model.predict(X_processed)
-    st.write(f"predict:{y_pred}") # Keep for debugging purpose
+    # st.write(f"predict:{y_pred}") # Keep for debugging purpose
     delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
     return y_pred
 
@@ -71,7 +71,7 @@ def getPredictResultDemo2():
     assert model is not None
     X_processed = preprocess_features()
     y_pred = model.predict(X_processed)
-    st.write(f"predict:{y_pred}") # Keep for debugging purpose
+    # st.write(f"predict:{y_pred}") # Keep for debugging purpose
     delete_files_in_directory(VOICE_SPLITS_DIRECTORY)
     return y_pred
 
