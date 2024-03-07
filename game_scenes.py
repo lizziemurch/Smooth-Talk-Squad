@@ -73,7 +73,7 @@ def introScene():
             game_util.delete_files_in_directory(os.path.join("voice","splits"))
             y_pred = game_util.getPredictResult()
             if any(y > 0.8 for y in y_pred):
-                st.header('Let\'s try again 🤔!')
+                st.header(' c\'s try again 🤔!')
             else:
                 st.header('Good JOB 🏆!')
                 st.balloons()
@@ -136,24 +136,24 @@ def peacockScene():
 
     if wav_audio_data is not None:
         game_util.createAudioFile(wav_audio_data)
-        with col2:
-            # Show Send Audio Button
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Send to HQ'):
-                game_util.delete_files_in_directory(os.path.join("voice","splits"))
-                y_pred = game_util.getPredictResult()
-                if any(y > 0.8 for y in y_pred):
-                    st.header('Let\'s try again 🤔!')
-                else:
-                    st.header('Good JOB 🏆!')
-                    st.balloons()
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Next Challenge'):
-                game_util.goToChallenge("penguinScene")
+    with col2:
+        # Show Send Audio Button
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Send to HQ'):
+            game_util.delete_files_in_directory(os.path.join("voice","splits"))
+            y_pred = game_util.getPredictResult()
+            if any(y > 0.8 for y in y_pred):
+                st.header('Let\'s try again 🤔!')
+            else:
+                st.header('Good JOB 🏆!')
+                st.balloons()
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Next Challenge'):
+            game_util.goToChallenge("penguinScene")
     if st.button('Back'):
         game_util.goToChallenge("introScene")
 
@@ -249,24 +249,24 @@ def penguinScene():
 
     if wav_audio_data is not None:
         game_util.createAudioFile(wav_audio_data)
-        with col2:
-            # Show Send Audio Button
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Send to HQ'):
-                game_util.delete_files_in_directory(os.path.join("voice","splits"))
-                y_pred = game_util.getPredictResult()
-                if any(y > 0.8 for y in y_pred):
-                    st.header('Let\'s try again 🤔!')
-                else:
-                    st.header('Good JOB 🏆!')
-                    st.balloons()
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Next Challenge'):
-                game_util.goToChallenge("pandaScene")
+    with col2:
+        # Show Send Audio Button
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Send to HQ'):
+            game_util.delete_files_in_directory(os.path.join("voice","splits"))
+            y_pred = game_util.getPredictResult()
+            if any(y > 0.8 for y in y_pred):
+                st.header('Let\'s try again 🤔!')
+            else:
+                st.header('Good JOB 🏆!')
+                st.balloons()
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Next Challenge'):
+            game_util.goToChallenge("pandaScene")
     if st.button('Back'):
         game_util.goToChallenge("peacockScene")
 
@@ -325,24 +325,24 @@ def pandaScene():
 
     if wav_audio_data is not None:
         game_util.createAudioFile(wav_audio_data)
-        with col2:
-            # Show Send Audio Button
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Send to HQ'):
-                game_util.delete_files_in_directory(os.path.join("voice","splits"))
-                y_pred = game_util.getPredictResult()
-                if any(y > 0.8 for y in y_pred):
-                    st.header('Let\'s try again 🤔!')
-                else:
-                    st.header('Good JOB 🏆!')
-                    st.balloons()
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Next Challenge'):
-                game_util.goToChallenge("foxScene")
+    with col2:
+        # Show Send Audio Button
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Send to HQ'):
+            game_util.delete_files_in_directory(os.path.join("voice","splits"))
+            y_pred = game_util.getPredictResult()
+            if any(y > 0.8 for y in y_pred):
+                st.header('Let\'s try again 🤔!')
+            else:
+                st.header('Good JOB 🏆!')
+                st.balloons()
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Next Challenge'):
+            game_util.goToChallenge("foxScene")
     if st.button('Back'):
         game_util.goToChallenge("penguinScene")
 
@@ -399,24 +399,24 @@ def foxScene():
 
     if wav_audio_data is not None:
         game_util.createAudioFile(wav_audio_data)
-        with col2:
-            # Show Send Audio Button
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Send to HQ'):
-                game_util.delete_files_in_directory(os.path.join("voice","splits"))
-                y_pred = game_util.getPredictResult()
-                if any(y > 0.8 for y in y_pred):
-                    st.header('Let\'s try again 🤔!')
-                else:
-                    st.header('Good JOB 🏆!')
-                    st.balloons()
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Next Challenge'):
-                game_util.goToChallenge("monkeyScene")
+    with col2:
+        # Show Send Audio Button
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Send to HQ'):
+            game_util.delete_files_in_directory(os.path.join("voice","splits"))
+            y_pred = game_util.getPredictResult()
+            if any(y > 0.8 for y in y_pred):
+                st.header('Let\'s try again 🤔!')
+            else:
+                st.header('Good JOB 🏆!')
+                st.balloons()
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Next Challenge'):
+            game_util.goToChallenge("monkeyScene")
     if st.button('Back'):
         game_util.goToChallenge("pandaScene")
 
@@ -473,24 +473,24 @@ def monkeyScene():
 
     if wav_audio_data is not None:
         game_util.createAudioFile(wav_audio_data)
-        with col2:
-            # Show Send Audio Button
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Send to HQ'):
-                game_util.delete_files_in_directory(os.path.join("voice","splits"))
-                y_pred = game_util.getPredictResult()
-                if any(y > 0.8 for y in y_pred):
-                    st.header('Let\'s try again 🤔!')
-                else:
-                    st.header('Good JOB 🏆!')
-                    st.balloons()
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Next Challenge'):
-                game_util.goToChallenge("tortoiseScene")
+    with col2:
+        # Show Send Audio Button
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Send to HQ'):
+            game_util.delete_files_in_directory(os.path.join("voice","splits"))
+            y_pred = game_util.getPredictResult()
+            if any(y > 0.8 for y in y_pred):
+                st.header('Let\'s try again 🤔!')
+            else:
+                st.header('Good JOB 🏆!')
+                st.balloons()
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Next Challenge'):
+            game_util.goToChallenge("tortoiseScene")
     if st.button('Back'):
         game_util.goToChallenge("finalScene")
 ###############################################
@@ -546,24 +546,24 @@ def tortoiseScene():
 
     if wav_audio_data is not None:
         game_util.createAudioFile(wav_audio_data)
-        with col2:
-            # Show Send Audio Button
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Send to HQ'):
-                game_util.delete_files_in_directory(os.path.join("voice","splits"))
-                y_pred = game_util.getPredictResult()
-                if any(y > 0.8 for y in y_pred):
-                    st.header('Let\'s try again 🤔!')
-                else:
-                    st.header('Good JOB 🏆!')
-                    st.balloons()
-            st.write(" ")
-            st.write(" ")
-            st.write(" ")
-            if st.button('Next Challenge'):
-                game_util.goToChallenge("finalScene")
+    with col2:
+        # Show Send Audio Button
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Send to HQ'):
+            game_util.delete_files_in_directory(os.path.join("voice","splits"))
+            y_pred = game_util.getPredictResult()
+            if any(y > 0.8 for y in y_pred):
+                st.header('Let\'s try again 🤔!')
+            else:
+                st.header('Good JOB 🏆!')
+                st.balloons()
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Next Challenge'):
+            game_util.goToChallenge("finalScene")
     if st.button('Back'):
         game_util.goToChallenge("monkeyScene")
 
@@ -623,20 +623,28 @@ def finalScene():
         unsafe_allow_html=True,
         )
 
-    wav_audio_data = st_audiorec()
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        wav_audio_data = st_audiorec() # tadaaaa! yes, that's it! :D
 
     if wav_audio_data is not None:
-        # display audio data as received on the Python side
-        col_playback, col_space = st.columns([0.58,0.42])
-        with col_playback:
-            st.audio(wav_audio_data, format='audio/wav')
         game_util.createAudioFile(wav_audio_data)
-
+    with col2:
         # Show Send Audio Button
-        if st.button('Send'):
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        if st.button('Send to HQ'):
+            game_util.delete_files_in_directory(os.path.join("voice","splits"))
             y_pred = game_util.getPredictResult()
-            if any(y > 0.6 for y in y_pred):
-                st.write('Let\'s try again !')
+            if any(y > 0.8 for y in y_pred):
+                st.header('Let\'s try again 🤔!')
             else:
-                st.write('Good JOB !')
+                st.header('Good JOB 🏆!')
                 st.balloons()
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+
+    if st.button('Back'):
+        game_util.goToChallenge("monkeyScene")
